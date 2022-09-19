@@ -1,0 +1,131 @@
+Sriven Sikhinam
+HW1 
+Typical Employee Survey Data CSV
+
+```{r}
+df  = read.csv("Typical_Employee_Survey_Data.csv")
+df
+names(df)
+ncol(df)
+nrow(df)
+dim(df)
+head(df)
+tail(df)
+str(df)
+class(df$c)
+df$c = as.factor(df$c)
+class(df$c)
+str(df)
+```
+```{r}
+#Column
+df$a
+df[2]
+df[c("b")]
+df[2:3]
+df[c("b","c")]
+```
+```{r}
+#Rows
+df[2,]
+```
+```{r}
+#Combined
+df[2:3,c("b")]
+df[2:3,2:3]
+```
+```{r}
+#Levels
+df$c
+table(df$b)
+table(df$b, df$c)
+```
+```{r}
+#Filtering 
+df[df$c == 2,]
+```
+```{r}
+#Ordering 
+df[order(df$b),]
+df[order(-df$b),]
+```
+```{r}
+#Change Column Name
+names(df)[5] = "Price"
+head(df)
+names(df)[5] = "Score"
+head(df)
+```
+```{r}
+#Changing the value for ROW 1, Column 1 
+df[1,1] = 53
+head(df)
+df$a[1] = 63
+head(df)
+```
+```{r}
+#Graphing 
+barplot(df$a)
+```
+```{r}
+barplot(df$a, main = "Score comparison to Age", xlab = "Score", ylab = "Age", col="Red", names.arg = df$Score)
+```
+```{r}
+pie(df$Score)
+pie(df$Score,label = df$a, main = "Score Comparison to Age")
+```
+```{r}
+stem(df$Score)
+```
+```{r}
+stem(df$a)
+```
+```{r}
+hist(df$a)
+```
+```{r}
+boxplot(df$a)
+```
+```{r}
+boxplot(df$a,df$Score)
+```
+```{r}
+#Summary Stats
+min(df$a)
+max(df$a)
+range(df$a)
+StatRange = max(df$a) - min(df$a)
+StatRange
+
+mean(df$a)
+sd(df$a)
+var(df$a)
+sqrt(var(df$a))
+fivenum(df$a)
+IQR(df$a)
+quantile(df$a)
+summary(df$a)
+boxplot.stats(df$a)
+boxplot.stats(df$a)$out
+```
+```{r}
+#Data Frame Summary
+summary(df)
+```
+
+```{r}
+by(df$a,df$c,mean)
+by(df$a,df$c,sd)
+```
+```{r}
+by(df$a,df$c,summary)
+```
+```{r}
+aggregate(df$a,list("Type" = df$c), median)
+```
+```{r}
+aggregate(df$a,list(Type = df$c), summary)
+```
+
+
+
